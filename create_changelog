@@ -161,6 +161,13 @@ for report in /.build.packages/OTHER/*.report \
     >> $changelog
   fi
 
+  echo "" >> $changelog
+  echo "References" >> $changelog
+  echo "==========" >> $changelog
+  echo "" >> $changelog
+  sed -n -r -e 's/(.*)(CVE-[[:digit:]]{4}-[[:digit:]]{4})(.*)/\2/p' $changelog | \
+  sort -u >> $changelog
+
 done
 
 
